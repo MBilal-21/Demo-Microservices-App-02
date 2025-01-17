@@ -1,0 +1,75 @@
+version: '3.8'
+services:
+
+  product-service:
+    build: ./product-service
+    ports:
+      - "5002:5002"
+    networks:
+      - app-network
+
+  user-service:
+    build: ./user-service
+    ports:
+      - "5001:5001"
+    networks:
+      - app-network
+
+  order-service:
+    build: ./order-service
+    ports:
+      - "5003:5003"
+    networks:
+      - app-network
+    depends_on:
+      - user-service
+      - product-service
+
+  # client-service:
+  #   build: ./client
+  #   ports:
+  #     - "5000:80"
+  #   networks:
+  #     - app-network
+  #   depends_on:
+  #     - order-service
+  #     - user-service
+  #     - product-service
+
+  
+
+networks:
+  app-network:
+    driver: bridge
+
+
+
+# version: '3'
+# services:
+#   client:
+#     build: ./client
+#     ports:
+#       - "3000:80"  # Maps NGINX port to localhost:3000
+#     environment:
+#       - NODE_ENV=production
+
+#   user-service:
+#     build: ./user-service
+#     ports:
+#       - "5001:5001"
+#     environment:
+#       - NODE_ENV=development
+
+#   product-service:
+#     build: ./product-service
+#     ports:
+#       - "5002:5002"
+#     environment:
+#       - NODE_ENV=development
+
+#   order-service:
+#     build: ./order-service
+#     ports:
+#       - "5003:5003"
+#     environment:
+#       - NODE_ENV=development

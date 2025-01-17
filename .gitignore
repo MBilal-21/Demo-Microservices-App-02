@@ -1,0 +1,17 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+*.log
+
+# Docker
+*.env
+.dockerignore
+
+# Temporary files
+*.tmp
+*.cache
+
+# IDE files
+.vscode/
+.DS_Store

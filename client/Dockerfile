@@ -1,0 +1,20 @@
+# Base image for building
+FROM node:18-alpine AS build
+
+# Set working directory
+WORKDIR /app
+
+# Copy and install dependencies
+COPY package.json .
+RUN npm install
+
+# Copy the rest of the app and build
+COPY . .
+RUN npm run build
+
+# Use NGINX to serve the built app
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
