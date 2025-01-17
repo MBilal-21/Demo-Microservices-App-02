@@ -33,3 +33,15 @@
 
 <h2>Summary</h2>
 <p>This microservices application demonstrates how multiple services can work together, linked through a client frontend, to provide a functional and cohesive system for managing users, products, and orders.</p>
+
+
+<h2>Summary</h2>
+<p>This microservices application demonstrates how multiple services can work together, linked through a client frontend, to provide a functional and cohesive system for managing users, products, and orders.</p>
+
+<h2>How To Run</h2>
+<p>docker-compose up --build</p>
+<p>http://localhost:5000</p>
+<p>http://localhost:5001/users</p>
+<p>http://localhost:5002</p>
+<p>http://localhost:5002/products</p>
+<p>http://localhost:5003/orders</p>
